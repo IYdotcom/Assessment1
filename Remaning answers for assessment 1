@@ -1,0 +1,12 @@
+#Find the total number of unique suppliers.
+unique_suppliers = df["Supplier"].nunique()
+print("Total number of unique suppliers:", unique_suppliers)
+
+#Count the occurrences of each category using collections.counter
+from collections import Counter
+category_counts = Counter(df['Category'])
+#Find the most common category.
+most_common_category = category_counts.most_common(1)
+
+print("Category Counts:", category_counts)
+print("Most Common Category:", most_common_category[0])
