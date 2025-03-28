@@ -1,0 +1,40 @@
+​​
+import pandas as pd
+
+
+df= pd.read_csv('/Users/ishayadav/PycharmProjects/PythonProject/dataset1.csv')
+
+
+#Find the category with the highest average rating.
+df.groupby('Category')['Rating'].mean()
+print(df.groupby('Category')['Rating'].mean())
+df.sort_values('Rating', ascending=False)
+
+
+#Find the total stock available for each category.
+df.groupby('Category')['Stock'].sum()
+print(df.groupby('Category')['Stock'].sum())
+
+
+#Discounted Price Calculation:
+#Create a new column Final_Price where
+# #Final_Price = Price - (Price * Discount / 100).
+Final_price=df['Final_price']= df['Price']*(df['Price'] * df['Discount'] / 100)
+#Find the top 3 most discounted products.
+Top_3_products = Final_price.idxmax()
+print(Top_3_products)
+
+
+
+
+#Supplier Analysis:Find the supplier with the highest
+# average price of products.
+supplier_avg_price = df.groupby('Supplier')['Price'].mean()
+highest_avg_supplier = supplier_avg_price.idxmax()
+highest_avg_price = supplier_avg_price.max()
+
+
+print(highest_avg_supplier, highest_avg_price)
+
+
+#Find the total number of unique suppliers.
